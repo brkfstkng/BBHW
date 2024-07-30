@@ -5,29 +5,36 @@ $(".slider_component").each(function (index) {
 
     // const loopedSlidesValue = 1;
 
-    const listSwiper = new Swiper($(this).find(".swiper.is-slider-info")[0], {
-        speed: 500,
+
+    const photoSwiper = new Swiper($(this).find(".swiper.is-flavor")[0], {
         loop: true,
         // loopedSlides: loopedSlidesValue,
-        slidesPerView: 2,
-        centeredSlides: true, 
-        direction: "vertical",
+        slidesPerView: 3,
+        centeredSlides: true,
+        // createElements: true,
+        speed: 500,
         navigation: {
             nextEl: $(this).find(".swiper-next")[0],
             prevEl: $(this).find(".swiper-prev")[0],
             disabledClass: "is-disabled"
         },
         slideActiveClass: "is-active",
-        slideDuplicateActiveClass: "is-active"
+        slideDuplicateActiveClass: "is-active",
+        breakpoints: {
+            992: {
+                slidesPerView: 2
+            }
+        }
     });
 
-    const photoSwiper = new Swiper($(this).find(".swiper.is-flavor")[0], {
+    const listSwiper = new Swiper($(this).find(".swiper.is-slider-info")[0], {
+        allowTouchMove: false,
+        speed: 500,
         loop: true,
-        // loopedSlides: loopedSlidesValue,
-        slidesPerView: 2,
         centeredSlides: true,
-        createElements: true,
-        speed: 500
+        // loopedSlides: loopedSlidesValue,
+        slidesPerView: "auto", 
+        direction: "vertical"
     });
 
     listSwiper.controller.control = photoSwiper;

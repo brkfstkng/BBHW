@@ -11,7 +11,7 @@ gsap.from('.spec_pill', {
   },
   opacity: 0,
   y: 20,
-  stagger: 0.5,
+  stagger: 0.6,
   ease: 'power2.out'
 });
 
@@ -67,7 +67,8 @@ let flavorTimeline = gsap.timeline({
 
 flavorTimeline.from(".home-flavor-item", {
   opacity: 0,
-  y: 100,
+  scale: 0.95,
+  y: 50,
   duration: 1,
   ease: "power2.out"
 });

@@ -67,28 +67,50 @@ menuButton.addEventListener("click", function() {
     isNavOpen = !isNavOpen;
 });
 
-// Stagger Headings
-const splitType = new SplitType(".stagger", {
+// Text animations
+
+
+const splitType = new SplitType("[data-text-split]", {
     types: "words, chars",
     tagName: "span"
 });
 
-document.querySelectorAll(".stagger").forEach((element) => {
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: element,
-            start: "top bottom",
-            end: "top 70%",
-            toggleActions: "none play none reset"
-        }
-    });
 
-    tl.set(element, { visibility: "visible" })
-    .from(element.querySelectorAll(".char"), {
+document.querySelectorAll("[data-letters-fade-up]").forEach(element => {
+    const tl = gsap.timeline({
+    scrollTrigger: {
+        trigger: element,
+        start: "top bottom",
+        end: "top 70%",
+        toggleActions: "none play none reset"
+    }
+    });
+    tl.set(element, { visibility: "visible" });
+    tl.from(element.querySelectorAll(".char"), { 
         opacity: 0,
-        y: 30,
-        duration: 0.2,
-        ease: "power2.out",
-        stagger: { amount: 0.2 }
+        yPercent: 50, 
+        duration: 0.2, 
+        ease: "power2.out", 
+        stagger: { 
+            amount: 0.6 
+        } 
+    });
+});
+
+document.querySelectorAll("[data-words-fade-in]").forEach(element => {
+    const tl = gsap.timeline({
+    scrollTrigger: {
+        trigger: element,
+        scrub: true
+    }
+    });
+    tl.set(element, { visibility: "visible" });
+    tl.from(element.querySelectorAll(".word"), { 
+        opacity: 0.1,
+        duration: 0.2, 
+        ease: "power2.out", 
+        stagger: { 
+            amount: 0.6 
+        } 
     });
 });

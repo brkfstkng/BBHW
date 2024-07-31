@@ -7,8 +7,8 @@ const feedSwiper = new Swiper(".swiper.is-feed", {
         disableOnInteraction: false
     },
     navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: ".swiper-next",
+        prevEl: ".swiper-prev",
     },
     speed: 500
 });

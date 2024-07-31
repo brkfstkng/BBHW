@@ -1,6 +1,42 @@
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
+// Flavor entrance 
+
+const savedTheme = localStorage.getItem('theme');
+const openingSliderComponent = document.querySelector('.opening_slider_component');
+
+if (!savedTheme && openingSliderComponent) {
+  const flavorSwiper = new Swiper(".swiper.enter_flavor", {
+    loop: true,
+    slidesPerView: 3,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: true
+    },
+    navigation: {
+      nextEl: ".swiper-next",
+      prevEl: ".swiper-prev",
+    },
+    speed: 500,
+    on: {
+      slideChange: function () {
+        // Get the active slide
+        const activeSlide = this.slides[this.activeIndex];
+        
+        // Get the data attribute
+        const dataAttribute = activeSlide.getAttribute('data-theme');
+        
+        // Apply the data attribute to another container
+        if (openingSliderComponent) {
+          openingSliderComponent.setAttribute('data-theme', dataAttribute);
+        }
+      }
+    }
+  });
+}
+
 // NAVIGATION
 let isNavOpen = false;
 const menuButton = document.querySelector(".menu-button");

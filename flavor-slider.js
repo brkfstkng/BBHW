@@ -13,6 +13,24 @@ $(".slider_component").each(function (index) {
         centeredSlides: true,
         // createElements: true,
         speed: 500,
+        on: {
+            slideChange: function () {
+              // Get the active slide
+              const activeSlide = this.slides[this.activeIndex];
+              
+              // Get the data attribute (replace 'your-attribute' with the actual attribute name)
+              const dataAttribute = activeSlide.getAttribute('data-theme');
+              
+              // Apply the data attribute to another container
+              // Replace '.your-container' with the actual selector for your target container
+              const targetContainer = document.querySelector('.our_flavors_wrapper');
+              if (targetContainer) {
+                targetContainer.setAttribute('data-theme', dataAttribute);
+                // If you want to apply it as a class instead, use:
+                // targetContainer.className = dataAttribute;
+              }
+            }
+          },
         navigation: {
             nextEl: $(this).find(".swiper-next")[0],
             prevEl: $(this).find(".swiper-prev")[0],
